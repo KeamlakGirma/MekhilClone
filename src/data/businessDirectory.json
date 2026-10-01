@@ -1,0 +1,46 @@
+{
+  "categories": [
+    "Advertising and Printing",
+    "Automotive",
+    "Education and Development",
+    "Event Services",
+    "Financial Services",
+    "Food and Dining",
+    "Furniture Services",
+    "Government Companies",
+    "Health and Beauty",
+    "Hotels and Travel",
+    "Import and Export",
+    "IT & Technology",
+    "Logistics",
+    "Non-Governmental Organizations",
+    "Professional Services",
+    "Real Estate Services",
+    "Shopping",
+    "Others"
+  ],
+  "listings": [
+    {
+      "category": "Advertising and Printing",
+      "name": "Brand It",
+      "telephone": "0906111113",
+      "website": "https://branditeth.com",
+      "email": "branditeth@gmail.com",
+      "service": "Logo Design and Branding",
+      "contact": "Oda Bekele, COO",
+      "location": "Gabon Avenue, Addis Ababa",
+      "logo": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=200&h=200&fit=crop"
+    },
+    {
+      "category": "Event Services",
+      "name": "Brand Event Organizing",
+      "telephone": "+251116634220 / +251911240174",
+      "website": "https://www.brandethio.com/",
+      "email": "arsema@brandethio.com",
+      "service": "International & Local Conferences & Events",
+      "contact": "Arsema Yigrem, General Manager",
+      "location": "DH Geda Tower, Bole",
+      "logo": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=200&h=200&fit=crop"
+    }
+  ]
+}

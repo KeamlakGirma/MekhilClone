@@ -1,0 +1,32 @@
+{
+  "courseDiscussions": [
+    { "title": "Finding \"X\" in Marketing", "unread": 5 },
+    { "title": "Negotiation and Conflict...", "unread": 0 },
+    { "title": "በጥበብ መምራት - Leadership", "unread": 0 },
+    { "title": "የደንበኞ አገልግሎት ስልጠና...", "unread": 5 },
+    { "title": "የአቀ የደንበኞ አገልግሎት", "unread": 5 },
+    { "title": "ንግድ ግንኙነት - Mastering...", "unread": 0 },
+    { "title": "ውጤታማ ህይወት በኒውሮ ሊን...", "unread": 0 },
+    { "title": "DemoLink", "unread": 0 },
+    { "title": "Find \"X\" in Marketing", "unread": 0 },
+    { "title": "Negotiation and Conflict...", "unread": 0 },
+    { "title": "በጥበብ መምራት - Leadership", "unread": 0 },
+    { "title": "የደንበኞ አገልግሎት ስልጠና...", "unread": 0 },
+    { "title": "የአቀ የደንበኞ አገልግሎት-Contin...", "unread": 0 }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "author": "Enola",
+      "avatar": "https://i.pravatar.cc/60?img=20",
+      "timestamp": "3 years ago",
+      "content": "Hello",
+      "likes": 2,
+      "replies": 0,
+      "comments": 0
+    }
+  ],
+  "onlineMembers": [
+    { "name": "Keamlak Girma", "avatar": "https://i.pravatar.cc/60?img=68" }
+  ]
+}
