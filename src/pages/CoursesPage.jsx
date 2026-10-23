@@ -4,12 +4,19 @@ import CourseCard from '../components/ui/CourseCard.jsx'
 import WaveDivider from '../components/layout/WaveDivider.jsx'
 import { useAuth } from '../context/AuthContext.jsx'
 
+import BundleCard from '../components/ui/BundleCard.jsx'
+import { getBundles } from '../data/store.js'
+import { useStoreValue } from '../components/admin/useStore.js'
+
 const FILTERS = ['All', 'My', 'Not Registered', 'Newest', 'Popular', 'Free', 'Categories']
 
 export default function CoursesPage() {
   const { isAuthed } = useAuth()
   const [filter, setFilter] = useState('All')
   const [q, setQ] = useState('')
+
+  const [bundles] = useStoreValue(getBundles)
+  const activeBundles = bundles.filter(b => b.active)
 
   let list = [...coursesData]
   if (filter === 'My') list = list.filter(c => c.enrolled)
@@ -51,7 +58,17 @@ export default function CoursesPage() {
 
       <WaveDivider color="#3FBBD9" flip className="-mt-1" />
 
-      <section className="max-w-[1200px] mx-auto px-8 py-12">
+     <section className="max-w-[1200px] mx-auto px-8 py-12">
+        {activeBundles.length > 0 && (
+          <div className="mb-16">
+            <h2 className="text-2xl font-semibold text-navy mb-6">📦 Bundles</h2>
+            <div className="grid md:grid-cols-3 gap-6 mb-14">
+              {activeBundles.map(b => <BundleCard key={b.id} bundle={b} />)}
+            </div>
+            <h2 className="text-2xl font-semibold text-navy mb-6">All Courses</h2>
+          </div>
+        )}
+
         {list.length === 0 ? (
           <p className="text-center text-gray-500 py-20">No courses found.</p>
         ) : (

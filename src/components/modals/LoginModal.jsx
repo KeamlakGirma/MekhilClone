@@ -3,6 +3,7 @@ import ModalShell from './ModalShell.jsx'
 import SocialButtons from '../ui/SocialButtons.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
 import { useModal } from '../../context/ModalContext.jsx'
+import { getUsers, createUser } from '../../data/store.js'
 
 export default function LoginModal() {
   const { login } = useAuth()
@@ -11,11 +12,16 @@ export default function LoginModal() {
   const [password, setPassword] = useState('')
 
   const submit = (e) => {
-    e.preventDefault()
-    if (!email) return
-    login(email)
-    close()
+  e.preventDefault()
+  if (!email) return
+  login(email)
+  // Also register in store so admin sees them (dedup by email)
+  const existing = getUsers().find(u => u.email === email)
+  if (!existing) {
+    createUser({ name: email.split('@')[0], email, role: email === 'admin@mekhil.com' ? 'admin' : 'user' })
   }
+  close()
+}
 
   return (
     <ModalShell>

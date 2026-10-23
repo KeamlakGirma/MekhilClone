@@ -13,10 +13,24 @@ import CommunityPage from './pages/CommunityPage.jsx'
 import PathPlayerPage from './pages/PathPlayerPage.jsx'
 import PaymentPage from './pages/PaymentPage.jsx'
 
+import AdminShell from './components/admin/AdminShell.jsx'
+import AdminDashboard from './pages/admin/AdminDashboard.jsx'
+import AdminUsers from './pages/admin/AdminUsers.jsx'
+import AdminEnrollments from './pages/admin/AdminEnrollments.jsx'
+import AdminPayments from './pages/admin/AdminPayments.jsx'
+import AdminReports from './pages/admin/AdminReports.jsx'
+import AdminCoupons from './pages/admin/AdminCoupons.jsx'
+import AdminBundles from './pages/admin/AdminBundles.jsx'
+import { useLocation } from 'react-router-dom'
+
+
 export default function App() {
+  const location = useLocation()
+  const isAdminRoute = location.pathname.startsWith('/admin')
+  
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      {!isAdminRoute && <Header />}
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -30,9 +44,18 @@ export default function App() {
           <Route path="/path-player" element={<PathPlayerPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="*" element={<Navigate to="/home" replace />} />
+          <Route path="/admin" element={<AdminShell />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="users" element={<AdminUsers />} />
+            <Route path="enrollments" element={<AdminEnrollments />} />
+            <Route path="payments" element={<AdminPayments />} />
+            <Route path="reports" element={<AdminReports />} />
+            <Route path="coupons" element={<AdminCoupons />} />
+            <Route path="bundles" element={<AdminBundles />} />
+          </Route>
         </Routes>
       </main>
-      <Footer />
+      {!isAdminRoute && <Footer />}
       <AuthModals />
     </div>
   )

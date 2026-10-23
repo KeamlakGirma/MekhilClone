@@ -11,14 +11,23 @@ export function AuthProvider({ children }) {
     if (raw) {
       try { setUser(JSON.parse(raw)) } catch { /* ignore */ }
     }
+    // Dev override: ?admin=1 in URL promotes to admin
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('admin') === '1') {
+      const promoted = { name: 'Admin', email: 'admin@mekhil.com', role: 'admin', enrolled: [] }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(promoted))
+      setUser(promoted)
+    }
   }, [])
 
   const login = (email) => {
+    const isAdmin = email === 'admin@mekhil.com'
     const u = {
       name: email.split('@')[0],
       email,
       firstName: 'Keamlak',
       lastName: 'Girma',
+      role: isAdmin ? 'admin' : 'user',
       enrolled: ['finding-x-in-marketing'],
     }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(u))
@@ -26,7 +35,7 @@ export function AuthProvider({ children }) {
   }
 
   const signup = (payload) => {
-    const u = { ...payload, enrolled: [] }
+    const u = { ...payload, role: 'user', enrolled: [] }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(u))
     setUser(u)
   }
@@ -36,8 +45,10 @@ export function AuthProvider({ children }) {
     setUser(null)
   }
 
+  const isAdmin = user?.role === 'admin'
+
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout, isAuthed: !!user }}>
+    <AuthContext.Provider value={{ user, login, signup, logout, isAuthed: !!user, isAdmin }}>
       {children}
     </AuthContext.Provider>
   )
